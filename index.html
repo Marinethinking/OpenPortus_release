@@ -382,6 +382,114 @@
       padding-bottom: 56px;
     }
 
+    /* ── APP SCREENSHOTS ── */
+    .shots-section {
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.35s;
+    }
+    .shots-head {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .shots-title {
+      font-size: clamp(22px, 3.5vw, 28px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .shots-sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 520px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .shots-scroller {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 24px;
+      padding: 4px 0 20px;
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-gutter: stable;
+    }
+    .shots-scroller::-webkit-scrollbar { height: 6px; }
+    .shots-scroller::-webkit-scrollbar-thumb {
+      background: var(--border-ui);
+      border-radius: 3px;
+    }
+    .shots-frame {
+      flex: 0 0 min(76vw, 260px);
+      scroll-snap-align: start;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-ui);
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.04),
+        0 20px 50px rgba(55, 85, 164, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .shots-frame:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 8px 12px rgba(0, 0, 0, 0.06),
+        0 28px 56px rgba(55, 85, 164, 0.14);
+    }
+    .shots-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: top;
+    }
+    .shots-cap {
+      position: relative;
+      z-index: 1;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-top: -28px;
+      padding: 20px 14px 12px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      background: var(--bg-primary);
+      border-radius: 0 0 18px 18px;
+    }
+    @media (min-width: 720px) {
+      .shots-scroller {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        overflow: visible;
+        margin: 0;
+        padding: 4px 0 0;
+        scroll-snap-type: none;
+      }
+      .shots-frame {
+        flex: unset;
+        min-width: 0;
+        scroll-snap-align: unset;
+      }
+    }
+    @media (min-width: 960px) {
+      .shots-scroller {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+    }
+
     /* ── DIVIDER ── */
     .divider {
       border: none;
@@ -582,6 +690,32 @@
   <div class="page-body">
     <div class="wrapper">
     <div style="height: 40px;"></div>
+
+    <section class="shots-section" aria-labelledby="shots-title">
+      <p class="shots-head">In the app</p>
+      <h2 id="shots-title" class="shots-title">See OpenPortus in action</h2>
+      <p class="shots-sub">
+        Browse ports, manage membership, stay on top of notifications, and keep every booking in one place.
+      </p>
+      <div class="shots-scroller">
+        <figure class="shots-frame">
+          <img src="assets/screenshot-home.png" alt="OpenPortus home: find a vessel, pick port, date, and passengers" width="472" height="1024" loading="lazy" decoding="async" />
+          <figcaption class="shots-cap">Home &amp; search</figcaption>
+        </figure>
+        <figure class="shots-frame">
+          <img src="assets/screenshot-membership.png" alt="OpenPortus membership: exclusive access and benefits" width="472" height="1024" loading="lazy" decoding="async" />
+          <figcaption class="shots-cap">Membership</figcaption>
+        </figure>
+        <figure class="shots-frame">
+          <img src="assets/screenshot-inbox.png" alt="OpenPortus inbox: trip updates and notifications" width="472" height="1024" loading="lazy" decoding="async" />
+          <figcaption class="shots-cap">Inbox</figcaption>
+        </figure>
+        <figure class="shots-frame">
+          <img src="assets/screenshot-bookings.png" alt="OpenPortus bookings: upcoming and past trips" width="472" height="1024" loading="lazy" decoding="async" />
+          <figcaption class="shots-cap">Bookings</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <div class="info-grid">
       <div class="info-card">
