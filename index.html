@@ -724,9 +724,20 @@
       font-weight: 300;
       letter-spacing: 0.06em;
     }
-    .footer-brand strong {
+    .footer-brand-link {
       color: rgba(255,255,255,0.95);
       font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-brand-link:hover,
+    .footer-brand-link:focus-visible {
+      color: rgba(0, 66, 210, 1);
+    }
+    .footer-brand-link:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.45);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
     .footer-contact {
       font-size: 13px;
@@ -928,7 +939,12 @@
   <footer class="site-footer">
     <div class="wrapper">
       <div class="footer-brand">
-        <strong>Marine Thinking</strong> · OpenPortus · 2026
+        <a
+          class="footer-brand-link"
+          href="https://www.marinethinking.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Marine Thinking</a> · OpenPortus · 2026
       </div>
     </div>
   </footer>
