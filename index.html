@@ -32,6 +32,18 @@
 
     html { scroll-behavior: smooth; }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     body {
       font-family: var(--sans);
       line-height: 1.6;
@@ -160,7 +172,7 @@
     /* ── HERO ── */
     .hero {
       padding: 32px 0 80px;
-      text-align: center;
+      text-align: left;
     }
     .hero-eyebrow {
       font-size: 11px;
@@ -176,7 +188,7 @@
       width: 72px;
       height: 2px;
       background: rgba(255,255,255,0.85);
-      margin: 0 auto 28px;
+      margin: 0 0 28px;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.12s;
     }
@@ -199,7 +211,7 @@
       font-weight: 300;
       color: rgba(255,255,255,0.78);
       max-width: 520px;
-      margin: 0 auto 44px;
+      margin: 0 0 44px;
       line-height: 1.75;
       letter-spacing: 0.01em;
       opacity: 0;
@@ -374,6 +386,128 @@
       border: 1px solid var(--border-ui);
       padding: 4px 10px;
       border-radius: 20px;
+    }
+
+    /* ── TESTFLIGHT ── */
+    .tf-section {
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.42s;
+    }
+    .tf-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-ui);
+      border-radius: 14px;
+      padding: 18px 22px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition:
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.25s ease;
+    }
+    .tf-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(55, 85, 164, 0.4);
+      background: var(--bg-secondary);
+      box-shadow:
+        0 8px 24px rgba(55, 85, 164, 0.08),
+        0 16px 48px rgba(55, 85, 164, 0.12);
+    }
+    .tf-link:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+    .tf-link:focus:not(:focus-visible) {
+      outline: none;
+    }
+    .tf-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 0;
+    }
+    .tf-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary-subtle);
+      color: var(--ios);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tf-link:hover .tf-icon {
+      background: rgba(55, 85, 164, 0.14);
+      color: var(--primary-dark);
+      transform: scale(1.04);
+    }
+    .tf-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    .tf-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ios);
+      margin-bottom: 4px;
+    }
+    .tf-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+    .tf-link:hover .tf-title {
+      color: var(--primary-dark);
+    }
+    .tf-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-top: 2px;
+    }
+    .tf-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .tf-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-ui);
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+    .tf-link:hover .tf-badge {
+      border-color: rgba(55, 85, 164, 0.35);
+      color: var(--primary);
+      background: rgba(55, 85, 164, 0.06);
+    }
+    .tf-arrow {
+      font-size: 18px;
+      color: var(--text-tertiary);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+    }
+    .tf-link:hover .tf-arrow {
+      transform: translateX(5px);
+      color: var(--primary);
     }
 
     /* ── PAGE BODY (light) ── */
@@ -670,6 +804,33 @@
           <span class="dl-arrow" aria-hidden="true">→</span>
         </a>
       </div>
+
+      <section class="tf-section" aria-labelledby="tf-title">
+        <h2 id="tf-title" class="visually-hidden">TestFlight prerelease</h2>
+        <a
+          class="tf-link"
+          href="https://testflight.apple.com/join/VUQFq88x"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="tf-left">
+            <div class="tf-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="tf-label">iOS prerelease</div>
+              <div class="tf-title">Join on TestFlight</div>
+              <div class="tf-sub">Install the beta on iPhone · iOS 16+</div>
+            </div>
+          </div>
+          <div class="tf-right">
+            <span class="tf-badge">TestFlight</span>
+            <span class="tf-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+      </section>
 <!-- 
       <div class="guide-row">
         <a class="guide-link" href="[GUIDE_LINK_PLACEHOLDER]" target="_blank" rel="noopener">
